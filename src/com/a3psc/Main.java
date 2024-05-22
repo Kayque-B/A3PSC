@@ -1,3 +1,5 @@
+package com.a3psc;
+
 import javax.swing.JFrame;
 
 public class Main {
