@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import com.a3psc.UserDAO;
 
 public class LoginScreen extends JFrame {
     private JTextField emailField;
@@ -39,7 +40,12 @@ public class LoginScreen extends JFrame {
         public void actionPerformed(ActionEvent e) {
             String email = emailField.getText();
             String password = new String(passwordField.getPassword());
-            // Implementar lógica de autenticação aqui
+            UserDAO userDao = new UserDAO();
+            if (userDao.authenticate(email, password)) {
+                JOptionPane.showMessageDialog(null, "Login bem-sucedido!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Email ou senha incorretos.");
+            }
         }
     }
 
