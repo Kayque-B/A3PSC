@@ -18,7 +18,7 @@ public class EventViewScreen extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        eventDao = new EventDAO();
+        eventDao = new EventDAO(); // Cria uma instância do EventDAO
 
         JPanel panel = new JPanel(new BorderLayout());
         tableModel = new DefaultTableModel(new String[]{"Nome", "Descrição", "Data de Início", "Data de Término"}, 0);
@@ -28,7 +28,7 @@ public class EventViewScreen extends JFrame {
         sortByDateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                loadEvents("date");
+                loadEvents("date"); // Carrega eventos ordenados por data de início
             }
         });
 
@@ -36,7 +36,7 @@ public class EventViewScreen extends JFrame {
             sortByNameButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e){
-                    loadEvents("name");
+                    loadEvents("name"); // Carrega eventos ordenados por nome
                 }
         });
 
@@ -51,15 +51,15 @@ public class EventViewScreen extends JFrame {
     }
 
     private void loadEvents(String sortBy) {
-        tableModel.setRowCount(0);
+        tableModel.setRowCount(0); // Limpa a tabela
 
-        List<Event> events = eventDao.getUpcomingEvents(sortBy);
-        for(Event event : events) {
+        List<Event> events = eventDao.getUpcomingEvents(sortBy); // Obtém os eventos ordenados
+        for (Event event : events) {
             tableModel.addRow(new Object[]{
-                event.getName(),
-                event.getDescription(),
-                event.getStartDate(),
-                event.getEndDate()
+                event.getName(), // Adiciona o nome do evento
+                event.getDescription(), // Adiciona a descrição do evento
+                event.getStartDate(), // Adiciona a data de início do evento
+                event.getEndDate() // Adiciona a data de término do evento
             });
         }
     }
@@ -67,7 +67,7 @@ public class EventViewScreen extends JFrame {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                new EventViewScreen().setVisible(true);
+                new EventViewScreen().setVisible(true); // Torna a tela de visualização de eventos visível
             }
         });
     }
