@@ -25,7 +25,7 @@ public class MainMenu extends JFrame {
         // Cria o menu do usuário
         userMenu = new JMenu("Usuário");
         loginMenuItem = new JMenuItem("Login");
-        registerMenuItem = new JMenuItem("Registar");
+        registerMenuItem = new JMenuItem("Registrar");
         userMenu.add(loginMenuItem); // Adiciona a opção de login ao menu de usuário
         userMenu.add(registerMenuItem); // Adiciona a opção de registro ao menu de usuário
 

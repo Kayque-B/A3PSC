@@ -1,6 +1,8 @@
 package com.a3psc;
 
 import javax.swing.*;
+import javax.swing.text.MaskFormatter;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,11 +10,11 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-public class EventRegistrationScreen extends JFrame{
+public class EventRegistrationScreen extends JFrame {
     private JTextField nameField;
     private JTextArea descriptionField;
-    private JTextField startDateField;
-    private JTextField endDateField;
+    private JFormattedTextField startDateField;
+    private JFormattedTextField endDateField;
 
     public EventRegistrationScreen() {
         setTitle ("Cadastro de Evento");
@@ -28,9 +30,9 @@ public class EventRegistrationScreen extends JFrame{
         JLabel descriptionLabel = new JLabel("Descrição: ");
         descriptionField = new JTextArea();
         JLabel startDateLabel = new JLabel("Data de início (dd-mm-aaaa hh:mm:ss)");
-        startDateField = new JTextField();
+        startDateField = new JFormattedTextField(createFormatter("##-##-#### ##:##:##"));
         JLabel endDateLabel = new JLabel("Data de término (dd-mm-aaaa hh:mm:ss)");
-        endDateField = new JTextField();
+        endDateField = new JFormattedTextField(createFormatter("##-##-#### ##:##:##"));
 
         JButton registerButton = new JButton("Registrar");
         registerButton.addActionListener(new RegisterButtonListener());
@@ -49,6 +51,16 @@ public class EventRegistrationScreen extends JFrame{
         add(panel); // Adiciona painel à tela
     }
 
+    private MaskFormatter createFormatter(String format) {
+        MaskFormatter formatter = null;
+        try {
+            formatter = new MaskFormatter(format);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return formatter;
+    }
+
     private class RegisterButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -57,7 +69,7 @@ public class EventRegistrationScreen extends JFrame{
             String startDateStr = startDateField.getText();
             String endDateStr = endDateField.getText();
 
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-aaaa HH:mm:ss");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
             try {
                 Timestamp startDate = new Timestamp(dateFormat.parse(startDateStr).getTime()); // Converte a string de data de início para Timestamp
                 Timestamp endDate = new Timestamp(dateFormat.parse(endDateStr).getTime());

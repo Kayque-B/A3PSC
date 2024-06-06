@@ -13,23 +13,23 @@ public class Event {
         return id;
     }
 
-    public int setId(int id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public String setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
 
-    public String getDescription(){
+    public String getDescription() {
         return description;
     }
-
-    public String setDescription(String description){
+    
+    public void setDescription(String description) {
         this.description = description;
     }
 
