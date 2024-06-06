@@ -39,7 +39,14 @@ public class LoginScreen extends JFrame {
         public void actionPerformed(ActionEvent e) {
             String email = emailField.getText();
             String password = new String(passwordField.getPassword());
-            // Implementar lógica de autenticação aqui
+            UserDAO userDao = new UserDAO();
+            if (userDao.authenticate(email, password)) {
+                // Autenticação bem-sucedida
+                JOptionPane.showMessageDialog(null, "Login bem-sucedido!");
+            } else {
+                // Autenticação falhou
+                JOptionPane.showMessageDialog(null, "Email ou senha incorretos.");
+            }
         }
     }
 
