@@ -17,7 +17,7 @@ public class EventRegistrationScreen extends JFrame{
     public EventRegistrationScreen() {
         setTitle ("Cadastro de Evento");
         setSize (400, 300);
-        setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation (JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo (null);
 
         JPanel panel = new JPanel();

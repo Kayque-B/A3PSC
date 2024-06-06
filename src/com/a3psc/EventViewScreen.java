@@ -15,7 +15,7 @@ public class EventViewScreen extends JFrame {
     public EventViewScreen() {
         setTitle("Visualização de eventos");
         setSize(600, 400);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
 
         eventDao = new EventDAO(); // Cria uma instância do EventDAO
